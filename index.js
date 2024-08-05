@@ -1,15 +1,6 @@
-// function toggle(a) {
-//     a.parentNode.getElementsByClassName("content")[0].classList.toggle("focus");
-//     a.parentNode.getElementsByClassName("arrow")[0].classList.toggle("transform");
-// }
-
-// function toggle2(a) {
-//     a.parentNode.getElementsByClassName("content")[1].classList.toggle("focus");
-//     a.parentNode.getElementsByClassName("arrow")[1].classList.toggle("transform");
-// }
-
 import bodyParser from "body-parser";
 import express from "express";
+import "./script.js";
 
 const app = express();
 const port = 5000;
@@ -22,7 +13,7 @@ app.post("/calendar", (req, res) => {
     session = req.params.id;
     console.log(session);
     res.render('calendar.ejs')
-  });
+});
     
 app.get("/", (req, res) => {
     res.render("index.ejs");
@@ -61,6 +52,7 @@ app.get("/other", (req, res) => {
     res.render("portfolio/other.ejs");
 })
 app.get("/calendar", (req, res) => {
+
     res.render("calendar.ejs");
 })
 app.listen(port, () => {

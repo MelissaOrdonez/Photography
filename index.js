@@ -8,6 +8,10 @@ const port = 5000;
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"));
 
+app.post("/contact", (req, res) => {
+    console.log(req.body);
+})
+
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })

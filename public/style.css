@@ -86,6 +86,22 @@ p{
     background-color: #ddd;
 }
 
+.bar{
+    border: lightskyblue;
+    border-radius: 5px;
+}
+
+.searchSubmit{
+    height: 34px;
+    cursor: pointer;
+    background-color: rgba(210, 233, 255, 0.671);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.searchSubmit:hover{
+    box-shadow: 6px 6px 12px #bbbb;
+}
 
 h1{
     font-size: 5rem;
@@ -119,11 +135,11 @@ details > summary{
     padding: 15px;
     margin: 20px auto;
     width: 70%;
-    box-shadow: 8px 8px 16px #bbbbbb;
+    box-shadow: 6px 6px 14px lightskyblue;
 }
 
 details[open] summary{
-    border-left: 20px solid lightskyblue;
+    box-shadow: 6px 6px 14px rgb(99, 157, 193);
 }
 
 details > p{
@@ -134,7 +150,7 @@ details > p{
     padding: 10px;
     margin: 20px auto;
     width: 70%;
-    box-shadow: 4px 4px 8px #bbbbbb;
+    box-shadow: 4px 4px 8px rgb(99, 157, 193);
 }
 
 /*Portfolio*/
@@ -247,10 +263,10 @@ textarea:focus{
     background-color: ghostwhite;
 }
 
-input[type=text]:focus{
+.contacts input[type=text]:focus{
     border: 3px solid black;
     background-color: ghostwhite;
-}
+} 
 
 .contacts form > input[type=submit]{
     background-color: black;
@@ -357,28 +373,30 @@ header .icons{
     padding: 0 30px 0 0;
 }
 
-header .icons span{
+header .icons form button{
+    background-color: aliceblue;
     height: 38px;
     width: 38px;
     color: lightskyblue;
     font-size: 1.9rem;
-    margin: 0 1px;
-    cursor: pointer;
+    margin: 0 2px;
     text-align: center;
-    line-height: 38px;
     border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    line-height: 38px;
     
 }
 
-header .icons span:hover{
+
+header .icons form button:hover{
     background-color: lightskyblue;
     color: white;
-
 }
 
-header .icons span:last-child{
+/* header .icons form button:last-child{
     margin-right: -10px;
-}
+} */
 
 .calendar{
     padding: 20px;

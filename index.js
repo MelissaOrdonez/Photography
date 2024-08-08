@@ -1,16 +1,11 @@
 import bodyParser from "body-parser";
 import express from "express";
-import events from "node:events";
 
 const app = express();
 const port = 5000;
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static("public"));
-
-app.post("/contact", (req, res) => {
-    console.log(req.body);
-})
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
@@ -31,7 +26,41 @@ app.get("/portfolio", (req, res) => {
     res.render("portfolio.ejs");
 })
 app.get("/weddings", (req, res) => {
-    res.render("portfolio/weddings.ejs");
+    let numImg = 5;
+    let number = 1;
+    let image = `<img src = "../images/${number}.jpg" style="width:100%">`;
+    let left = "";
+    let right = "&#10095;"
+    
+    res.render("portfolio/weddings.ejs", {
+        images : image,
+        next : right,
+        prev : left
+    });
+
+    app.post("/weddings", (req, res) => {
+        number = req.body.submit === "prev" ? number-1 : number+1;
+        
+        if(number === 1){
+            left = "";
+            right = "&#10095;";
+        } 
+        else if(number >= numImg){
+            left = "&#10094;";
+            right = "";
+        } else{
+            left = "&#10094;";
+            right = "&#10095;";
+        }
+        
+        image = `<img src = "../images/${number}.jpg" style="width:100%">`; 
+
+        res.render("portfolio/weddings.ejs", {
+            images : image,
+            next : right,
+            prev : left
+        })
+    })
 })
 app.get("/portraits", (req, res) => {
     res.render("portfolio/portraits.ejs");
@@ -52,10 +81,7 @@ app.get("/calendar", (req, res) => {
     let session = req.query.submit;
 
     let currentDate = "", 
-    daysTag = "", 
-    prevNextIcon = "";
-
-    //.icons span
+    daysTag = "";
 
     let date = new Date(),
     currYear = date.getFullYear(),

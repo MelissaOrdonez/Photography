@@ -1,1 +1,21 @@
 <%- include("../partials/header.ejs") %>
+
+<div class = "fullPage">
+    <h1>Families</h1>
+    <div class="slideshow-container">
+   
+        <div class="mySlides1 fade">
+            <%- images %>
+        </div>
+        <div class="mySlides fade">
+            <%- images %>
+        </div>
+        <div class="mySlides fade">
+            <%- images %>
+        </div>
+        
+        <!-- Next and previous buttons -->
+         <form action = "/families" method = "POST"><button class="prev" name = "submit" value = "prev"><%- prev %></button></form>
+         <form action = "/families" method = "POST"><button class="next" name = "submit" value = "next"><%- next %></button></form>
+      </div>
+</div>

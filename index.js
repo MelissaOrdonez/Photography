@@ -28,7 +28,7 @@ app.get("/portfolio", (req, res) => {
 app.get("/weddings", (req, res) => {
     let numImg = 5;
     let number = 1;
-    let image = `<img src = "../images/${number}.jpg" style="width:100%">`;
+    let image = `<img src = "../images/wed${number}.jpg" style="width:100%">`;
     let left = "";
     let right = "&#10095;"
     
@@ -53,7 +53,7 @@ app.get("/weddings", (req, res) => {
             right = "&#10095;";
         }
         
-        image = `<img src = "../images/${number}.jpg" style="width:100%">`; 
+        image = `<img src = "../images/wed${number}.jpg" style="width:100%">`; 
 
         res.render("portfolio/weddings.ejs", {
             images : image,
@@ -62,20 +62,79 @@ app.get("/weddings", (req, res) => {
         })
     })
 })
-app.get("/portraits", (req, res) => {
-    res.render("portfolio/portraits.ejs");
-})
 app.get("/families", (req, res) => {
-    res.render("portfolio/families.ejs");
+    let numImg = 5;
+    let number = 1;
+    let image = `<img src = "../images/fam${number}.jpg" style="width:100%">`;
+    let left = "";
+    let right = "&#10095;"
+    
+    res.render("portfolio/families.ejs", {
+        images : image,
+        next : right,
+        prev : left
+    });
+
+    app.post("/families", (req, res) => {
+        number = req.body.submit === "prev" ? number-1 : number+1;
+        
+        if(number === 1){
+            left = "";
+            right = "&#10095;";
+        } 
+        else if(number >= numImg){
+            left = "&#10094;";
+            right = "";
+        } else{
+            left = "&#10094;";
+            right = "&#10095;";
+        }
+        
+        image = `<img src = "../images/fam${number}.jpg" style="width:100%">`; 
+
+        res.render("portfolio/families.ejs", {
+            images : image,
+            next : right,
+            prev : left
+        })
+    })
 })
-app.get("/graduations", (req, res) => {
-    res.render("portfolio/graduations.ejs");
-})
-app.get("/communions", (req, res) => {
-    res.render("portfolio/communions.ejs");
-})
-app.get("/other", (req, res) => {
-    res.render("portfolio/other.ejs");
+app.get("/graduation", (req, res) => {
+    let numImg = 5;
+    let number = 1;
+    let image = `<img src = "../images/grad${number}.jpg" style="width:100%">`;
+    let left = "";
+    let right = "&#10095;"
+    
+    res.render("portfolio/graduations.ejs", {
+        images : image,
+        next : right,
+        prev : left
+    });
+
+    app.post("/graduation", (req, res) => {
+        number = req.body.submit === "prev" ? number-1 : number+1;
+        
+        if(number === 1){
+            left = "";
+            right = "&#10095;";
+        } 
+        else if(number >= numImg){
+            left = "&#10094;";
+            right = "";
+        } else{
+            left = "&#10094;";
+            right = "&#10095;";
+        }
+        
+        image = `<img src = "../images/grad${number}.jpg" style="width:100%">`; 
+
+        res.render("portfolio/graduations.ejs", {
+            images : image,
+            next : right,
+            prev : left
+        })
+    })
 })
 app.get("/calendar", (req, res) => {
     let session = req.query.submit;

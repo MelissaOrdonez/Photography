@@ -11,49 +11,63 @@ body{
     font-style: normal;
 }
 
+/* Home */
+
 .info{
     background-image: url(https://avantgardistsparis.fr/wp-content/uploads/2019/12/reporter-photographe.jpg);
     height: 100vh;
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center; 
-    padding: 20px;
+    position: relative;
 }
 
 .aboutMe{
-    margin-top: 140px;
+    position: absolute;
     color: black;
+    left: 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-p{
-    width: 500px;
-    text-align: justify;
+.aboutMe h1{
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.aboutMe p{
+    width: 100%;
     line-height: 2;
 }
 
-/* Header */
+@media(min-width: 1200px){
+    .aboutMe{
+        width: 40%;
+        top: 0;
+        bottom: 0;
+    }
+}
 
-/* header{
-    position: sticky;
-    top: 0;
-    z-index: 999;
-} */
+@media(max-width: 1200px){
+    .aboutMe{
+        top: 40%;
+        width: 45%;
+    }
+}
+
+
+/* Header */
 
 .container{
     padding: 10px;
     display: block;
     background: transparent;
     overflow: hidden;
-    border-bottom: 8px solid lightskyblue;
-    border-radius: 100px;
+    border-bottom: 10px double lightskyblue;
+    /* border-radius: 150px; */
 }
 
 .navBar{
@@ -159,34 +173,56 @@ details > p{
 
 /*Portfolio*/
 
-.portfolio{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media(min-width:960px){
+    .grid{
+        display: grid;
+        gap: 30px;
+        margin: 20px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .gridImg{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .gridImg img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    } 
+
+    #pictures{
+        text-align: center;  
+        font-weight: 700; 
+        font-size: 4vw;
+    } 
 }
 
-.grid{
-    display: grid;
-    gap: 40px;
-    grid-template-columns: 600px 600px 600px;
-    grid-template-rows: 200px 600px;
+@media(max-width:960px){
+    .gridSquare{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gridImg{
+        width: 100%;
+        text-align: center;
+    } 
+
+    .gridImg img{
+        width: 80%;
+        height: auto;
+    }
+
+    #pictures{
+        text-align: center;  
+        font-weight: 700; 
+        font-size: 4rem;
+    } 
 }
-
-.gridSquare{
-    position: relative;
-}
-
-.gridSquare img{
-    width: 600px;
-    height: 600px;
-    object-fit: cover;
-} 
-
-#pictures{
-    text-align: center;  
-    font-weight: 700; 
-    font-size: 5rem;
-} 
 
 #pictures a{
     text-decoration: none;
@@ -196,50 +232,25 @@ details > p{
 
 /*Contacts*/
 
-.pages, .links{
+.pages, .contacts, .socials{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.socials{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.links{
-    margin: 20px;
-}
-
-#title1{
-    font-size: 3rem;
-    margin: 0;
-}
-
-#title2{
-    color: black;
 }
 
 .contacts{
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    margin: 20px;
+    width: 100%;
 }
 
 .contacts form{
     width: 100%;
-    margin: 10px;
 }
 
-.contacts form > input[type=text]{
-    width: 70%;
+.contacts form > input[type=text], textarea{
+    width: 90%;
     font-family: "Source Serif 4", serif;
-    color: black;
     padding: 15px;
     margin: 10px;
     border: 2px solid black;
@@ -248,36 +259,55 @@ details > p{
 }
 
 textarea{
-    font-family: "Source Serif 4", serif;
-    width: 70%;
-    color: black;
-    padding: 15px;
-    margin: 10px;
-    border: 2px solid black;
-    border-radius: 7px;
-    outline: none;
     resize: none;
     height: 100px;
 }
 
-textarea:focus{
-    border: 3px solid black;
-    background-color: ghostwhite;
+textarea:focus, .contacts input[type=text]:focus{
+    border: 3px solid lightskyblue;
+    background-color: aliceblue;
 }
 
-.contacts input[type=text]:focus{
-    border: 3px solid black;
-    background-color: ghostwhite;
-} 
-
 .contacts form > input[type=submit]{
-    background-color: black;
-    border: none;
-    color: white;
+    font-family: "Source Serif 4", serif;
+    font-size: 1rem;
+    background-color: aliceblue;
+    border: 2px solid lightskyblue;
     border-radius: 8px;
     padding: 20px 40px;
+    width: 30%;
     margin: 15px;
     cursor: pointer;
+}
+
+.contacts form > input[type=submit]:hover{
+    background-color: lightskyblue;
+}   
+
+@media(min-width:1300px){
+    .contacts{
+        width: 60%;
+        height: 100vh;
+    }
+
+    .socials{
+        width: 40%;
+        height: 100vh;
+    }
+
+    .socials img{
+        width: 100%;
+    }
+}
+
+@media(max-width: 1300px){
+    .pages{
+        flex-direction: column;
+    }
+
+    .socials img{
+        height: 400px;
+    }
 }
 
 /*Packages*/
@@ -289,16 +319,20 @@ textarea:focus{
     flex-direction: column;
 }
 
-.page h2{
-    color: black;
+.services{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.services{
-    display:flex;
-    justify-content: center;
-    align-items:flex-start;
-    width: 100%;
-    height: 100%;
+@media(max-width:960px){
+    .services{
+        flex-direction: column;
+    }
+}
+
+.page h2{
+    color: black;
 }
 
 .packages{
@@ -306,7 +340,7 @@ textarea:focus{
     border-radius: 5px;
     height: 900px;
     width: 100%;
-    margin: 0 20px;
+    margin: 20px;
 
     display:flex;
     justify-content: center;
@@ -321,14 +355,18 @@ textarea:focus{
 }
 
 .book{
-    background-color: lightskyblue;
+    background-color: aliceblue;
     font-size: 1rem;
-    border: none;
+    border: 2px solid lightskyblue;
     border-radius: 5px;
     padding: 15px 25px;
     margin: 30px;
     cursor: pointer;
     text-decoration: none;
+}
+
+.book:hover{
+    background-color: lightskyblue;
 }
 
 /*Calendar*/
